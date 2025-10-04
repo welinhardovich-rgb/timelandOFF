@@ -30,34 +30,42 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
+      padding: 15px 30px;
       box-sizing: border-box;
+      flex-wrap: wrap;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
     }
 
     .logo img {
-      width: 80px;
+      width: 70px;
       height: auto;
       filter: drop-shadow(0 0 25px rgba(255, 155, 60, 0.5));
     }
 
     .logo h1 {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       margin: 0;
       text-shadow: 0 0 10px #b87333, 0 0 25px #ff9a3c;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
     }
 
     nav a {
       color: #ffb873;
       text-decoration: none;
-      margin-left: 25px;
+      margin: 5px 15px;
       font-weight: bold;
-      font-size: 1.05rem;
+      font-size: 1rem;
       transition: color 0.3s ease;
     }
 
@@ -77,8 +85,8 @@
     }
 
     h2 {
-      font-size: 2.5rem;
-      margin-top: 40px;
+      font-size: 2.2rem;
+      margin-top: 20px;
       text-shadow: 0 0 15px #b87333, 0 0 30px #ff9a3c;
       animation: glow 2s ease-in-out infinite alternate;
     }
@@ -90,8 +98,10 @@
 
     .buttons {
       display: flex;
+      flex-wrap: wrap;
       gap: 16px;
       margin-top: 25px;
+      justify-content: center;
     }
 
     button {
@@ -115,7 +125,7 @@
 
     .ip-popup {
       margin-top: 20px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       color: #ffb873;
       opacity: 0;
       transition: opacity 0.5s ease;
@@ -125,66 +135,69 @@
       opacity: 1;
     }
 
-    /* Виджеты */
+    /* Слайдер */
     .slider {
-      width: 80%;
-      max-width: 700px;
-      margin-top: 40px;
       position: relative;
+      width: 90%;
+      max-width: 800px;
       overflow: hidden;
+      margin-top: 50px;
       border-radius: 15px;
       box-shadow: 0 0 25px rgba(255, 155, 60, 0.3);
     }
 
     .slides {
       display: flex;
-      transition: transform 2.5s ease-in-out;
+      transition: transform 1.5s ease-in-out;
     }
 
     .slide {
       min-width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 40px;
       box-sizing: border-box;
+      padding: 40px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(4px);
     }
 
     .slide h3 {
+      font-size: 1.6rem;
       color: #ffb873;
       margin-bottom: 15px;
-      text-shadow: 0 0 10px #b87333;
     }
 
     .slide p {
+      font-size: 1rem;
+      line-height: 1.5;
       color: #ddd;
-      line-height: 1.6;
     }
 
     .dots {
       display: flex;
       justify-content: center;
-      gap: 10px;
       margin-top: 15px;
+      gap: 8px;
     }
 
     .dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: #666;
+      background: #b87333;
+      opacity: 0.5;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
+      transition: opacity 0.3s, transform 0.3s;
     }
 
     .dot.active {
-      background-color: #ff9a3c;
-      box-shadow: 0 0 10px #ff9a3c;
+      opacity: 1;
       transform: scale(1.2);
+      background: #ff9a3c;
     }
 
     /* Раздел Доната */
     #donate {
       margin-top: 60px;
-      width: 80%;
+      width: 90%;
       max-width: 700px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -207,6 +220,7 @@
       margin: 10px 0;
       font-weight: bold;
       color: #fff;
+      flex-wrap: wrap;
     }
 
     .donate-item span {
@@ -217,11 +231,39 @@
       margin: 30px 0;
       color: #888;
       font-size: 0.9rem;
+      text-align: center;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 📱 Мобильная адаптация */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 1.8rem;
+      }
+      .slide h3 {
+        font-size: 1.3rem;
+      }
+      .slide p {
+        font-size: 0.95rem;
+      }
+      .logo img {
+        width: 60px;
+      }
+      .logo h1 {
+        font-size: 1.2rem;
+      }
+      nav a {
+        font-size: 0.95rem;
+        margin: 5px 10px;
+      }
+      button {
+        width: 100%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
@@ -244,34 +286,20 @@
     </div>
     <div class="ip-popup" id="ipText">IP: timeland.joinserver.space</div>
 
-    <!-- ВИДЖЕТЫ -->
+    <!-- 🧩 Слайдер -->
     <div class="slider">
-      <div class="slides" id="slides">
-        <div class="slide">
-          <h3>💎 У нас отличная администрация</h3>
-          <p>На TimeLand дружелюбная и активная администрация, красивый сайт и стабильная работа сервера — никаких лагов и “картошек”!</p>
-        </div>
-        <div class="slide">
-          <h3>🚀 Сервер активно растёт!</h3>
-          <p>Помоги развитию проекта — пригласи друзей или купи донат, чтобы поддержать наш мир TimeLand!</p>
-        </div>
-        <div class="slide">
-          <h3>⚙️ Отличная сборка с модами</h3>
-          <p>Мы собрали уникальные моды, которые делают игровой процесс по-настоящему увлекательным и сбалансированным.</p>
-        </div>
-        <div class="slide">
-          <h3>🌍 Активное сообщество</h3>
-          <p>Игроки активно участвуют в ивентах, постройках и квестах — у нас всегда есть чем заняться!</p>
-        </div>
-        <div class="slide">
-          <h3>🎉 Уникальные фишки</h3>
-          <p>Собственный спавн, проработанные кланы, экономика и уютная атмосфера ждут тебя!</p>
-        </div>
+      <div class="slides">
+        <div class="slide"><h3>Добрая и отзывчивая администрация</h3><p>На TimeLand всегда царит дружеская атмосфера. Команда следит за порядком, помогает игрокам и делает игру комфортной. Мы не живём на картошке, зато живём идеей — сделать лучший сервер!</p></div>
+        <div class="slide"><h3>Сервер растёт и развивается</h3><p>TimeLand активно растёт, и каждый игрок может стать частью этого. Приглашай друзей или поддержи сервер покупкой доната — помоги нам развиваться вместе!</p></div>
+        <div class="slide"><h3>Качественная сборка и уникальные моды</h3><p>Наш сервер собран с любовью. Мы используем оптимизированные моды, чтобы обеспечить баланс, стабильность и интересную игру без лагов.</p></div>
+        <div class="slide"><h3>Постоянные обновления</h3><p>Мы регулярно добавляем новые возможности, улучшения и ивенты, чтобы тебе всегда было интересно возвращаться в мир TimeLand!</p></div>
+        <div class="slide"><h3>Дружное сообщество</h3><p>Здесь каждый игрок важен. На сервере уже сложилось приятное сообщество, где можно найти друзей и весело провести время.</p></div>
       </div>
-      <div class="dots" id="dots"></div>
     </div>
 
-    <!-- ДОНАТ -->
+    <div class="dots"></div>
+
+    <!-- 💰 Донат -->
     <section id="donate">
       <h3>🎁 Донат</h3>
       <div class="donate-item">Спонсор — <span>250₽</span></div>
@@ -285,40 +313,42 @@
   </footer>
 
   <script>
+    // Показ IP
     function showIP() {
       const ip = document.getElementById("ipText");
       ip.classList.add("show");
     }
 
     // Слайдер
-    const slides = document.getElementById('slides');
-    const dotsContainer = document.getElementById('dots');
-    const totalSlides = slides.children.length;
+    const slides = document.querySelector('.slides');
+    const dotsContainer = document.querySelector('.dots');
+    const totalSlides = document.querySelectorAll('.slide').length;
     let currentSlide = 0;
 
-    // Создание точек
+    // Создаём точки
     for (let i = 0; i < totalSlides; i++) {
       const dot = document.createElement('div');
       dot.classList.add('dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => moveToSlide(i));
+      dot.addEventListener('click', () => goToSlide(i));
       dotsContainer.appendChild(dot);
     }
 
     const dots = document.querySelectorAll('.dot');
+    dots[0].classList.add('active');
 
-    function moveToSlide(n) {
-      currentSlide = n;
-      slides.style.transform = `translateX(-${n * 100}%)`;
+    function goToSlide(index) {
+      currentSlide = index;
+      slides.style.transform = `translateX(-${index * 100}%)`;
       dots.forEach(dot => dot.classList.remove('active'));
-      dots[n].classList.add('active');
+      dots[index].classList.add('active');
     }
 
-    // Автопереключение (каждые 8 секунд)
-    setInterval(() => {
+    function autoSlide() {
       currentSlide = (currentSlide + 1) % totalSlides;
-      moveToSlide(currentSlide);
-    }, 8000);
+      goToSlide(currentSlide);
+    }
+
+    setInterval(autoSlide, 7000); // ⏳ Перелистывание каждые 7 секунд
   </script>
 </body>
 </html>
